@@ -1,0 +1,187 @@
+{
+  "meta": {
+    "title": "Jesse Tremblay — CV",
+    "description": "Profil professionnel de Jesse Tremblay — Saint-Amable, Québec."
+  },
+  "nav": {
+    "profile": "Profil",
+    "skills": "Compétences",
+    "experience": "Parcours",
+    "education": "Formation",
+    "interests": "Activités",
+    "contact": "Contact",
+    "print": "PDF",
+    "lang": "Langue",
+    "themeAria": "Basculer entre thème clair et sombre",
+    "themeLight": "Clair",
+    "themeDark": "Sombre"
+  },
+  "hero": {
+    "location": "Saint-Amable, QC, Canada",
+    "born": "Né le 16 novembre 1997",
+    "mobile": "Véhicule personnel — mobilité complète",
+    "ctaPdf": "Exporter en PDF",
+    "ctaMail": "Courriel",
+    "ctaTel": "Appeler"
+  },
+  "variants": {
+    "general": {
+      "role": "Candidat polyvalent — service & administration",
+      "hook": "Bilingue, à l’aise avec la technologie et les chiffres, je combine rigueur administrative, expérience client et autonomie numérique acquise en contexte exigeant."
+    },
+    "it": {
+      "role": "Candidat première ligne TI & support numérique",
+      "hook": "Autodidacte passionné par la logique et les systèmes, j’apprends vite, je structure l’information et j’aide les autres à résoudre des problèmes concrets — en personne ou à distance."
+    }
+  },
+  "profile": {
+    "title": "Profil",
+    "paragraphs": [
+      "Professionnel bilingue (français et anglais) avec une forte affinité pour les mathématiques, la logique et l’informatique. J’aime comprendre comment les choses fonctionnent et trouver des solutions claires, que ce soit avec des outils bureautiques, du matériel ou des environnements numériques.",
+      "Mon parcours inclut de l’expérience en épicerie (service et opérations), du soutien administratif en entreprise familiale (soumissions, documents professionnels, aide à la comptabilité) et plusieurs années en travail autonome autour du jeu compétitif et de la présence en ligne : diffusion, modération, planification d’événements et gestion de communautés.",
+      "Je recherche aujourd’hui un rôle stable où je peux mettre à profit mon sens du service, ma rigueur et ma curiosité technique — avec l’énergie et la discipline qu’on cultive en performance et en équipe."
+    ]
+  },
+  "skills": {
+    "title": "Compétences",
+    "groups": {
+      "office": {
+        "title": "Bureautique & administration",
+        "items": [
+          "Microsoft Excel et Word",
+          "Rédaction et mise en forme de documents professionnels",
+          "Saisie, classement et suivi administratif",
+          "Préparation de soumissions et de dossiers clients",
+          "Comptabilité de base et suivi de revenus / dépenses (travail autonome)"
+        ]
+      },
+      "digital": {
+        "title": "Numérique, médias & communautés",
+        "items": [
+          "OBS Studio et diffusion en direct",
+          "Modération et animation de communautés en ligne",
+          "Organisation de tournois et d’événements",
+          "Autonomie sur PC : installation, dépannage courant, organisation de fichiers",
+          "Apprentissage rapide de nouveaux outils"
+        ]
+      },
+      "human": {
+        "title": "Relationnel & leadership",
+        "items": [
+          "Service à la clientèle (accueil, conseil, gestion du rythme)",
+          "Travail d’équipe et communication claire",
+          "Gestion du stress et des échéances (contexte compétitif / événementiel)",
+          "Prise de décision et assertivité en contexte d’équipe"
+        ]
+      }
+    },
+    "groupsIt": {
+      "title": "Accent TI (version informatique)",
+      "items": [
+        "Diagnostic logique et découpage de problèmes",
+        "Documentation et transmission d’étapes claires aux utilisateurs",
+        "Sens de l’ordre : sauvegardes, nommage, structures de dossiers",
+        "Curiosité technique et veille autonome",
+        "Support utilisateur : patience, pédagogie, suivi"
+      ]
+    }
+  },
+  "experience": {
+    "title": "Expérience",
+    "items": [
+      {
+        "id": "freelance",
+        "title": "Travailleur autonome — jeu compétitif & présence en ligne",
+        "org": "Travail autonome",
+        "location": "À distance / Québec",
+        "period": "2016 — présent",
+        "bullets": [
+          "Gestion d’une activité indépendante autour du jeu compétitif : diffusion, calendrier, coordination avec partenaires et communautés.",
+          "Modération, animation et application de règles dans des groupes à fort débit de messages.",
+          "Utilisation d’Excel et Word pour le suivi simple des opérations, la planification et la présentation de contenus.",
+          "Participation à de nombreux tournois ; implication dans l’organisation d’événements (logistique légère, communication, respect des échéances).",
+          "Objectif actuel : transition vers un emploi stable et un revenu prévisible, en transférant ces habitudes de rigueur et d’autonomie."
+        ]
+      },
+      {
+        "id": "iga",
+        "title": "Commis d’épicerie",
+        "org": "IGA",
+        "location": "Saint-Amable, QC",
+        "period": "2015 — 2016",
+        "bullets": [
+          "Mise en rayon, rotation des produits et respect des normes d’hygiène et de salubrité.",
+          "Service à la clientèle : orientation, courtoisie et gestion du flux dans un environnement rapide.",
+          "Collaboration avec l’équipe et la supervision pour tenir les priorités et les standards de qualité.",
+          "Manipulation sécuritaire des produits et attention aux détails (dates, présentation, signalisation)."
+        ]
+      },
+      {
+        "id": "construction",
+        "title": "Soutien administratif (temps partiel, études)",
+        "org": "Meubles & Rénovation JP",
+        "location": "Québec",
+        "period": "Pendant le secondaire 4–5 (temps partiel)",
+        "bullets": [
+          "Aide à la comptabilité : saisie, classement et suivi de documents.",
+          "Préparation de soumissions et de dossiers pour clients, avec mise en forme professionnelle sur ordinateur.",
+          "Contribution à la cohérence et au ton professionnel des communications écrites.",
+          "Expérience en entreprise familiale : confidentialité, polyvalence et sens des responsabilités."
+        ]
+      },
+      {
+        "id": "referee",
+        "title": "Arbitre de soccer",
+        "org": "Ligues locales & soccer scolaire",
+        "location": "Saint-Amable, QC",
+        "period": "Pendant le secondaire (temps partiel / bénévolat)",
+        "bullets": [
+          "Application des règlements, gestion du chronomètre et du déroulement des matchs.",
+          "Communication claire avec joueurs, entraîneurs et spectateurs ; maintien d’un climat respectueux.",
+          "Décisions rapides sous pression, équité et intégrité sur le terrain.",
+          "Ponctualité, préparation des matchs et sens des responsabilités en contexte réglementé."
+        ]
+      }
+    ]
+  },
+  "education": {
+    "title": "Formation",
+    "items": [
+      {
+        "school": "École secondaire Demortagne",
+        "detail": "Secondaire 4–5 — fin en 2014",
+        "note": ""
+      },
+      {
+        "school": "École secondaire François-Williams",
+        "detail": "Secondaire 1–3",
+        "note": ""
+      }
+    ]
+  },
+  "languages": {
+    "title": "Langues",
+    "items": [
+      { "name": "Français", "level": "Langue maternelle / bilingue complet" },
+      { "name": "Anglais", "level": "Bilingue complet (oral et écrit)" }
+    ]
+  },
+  "interests": {
+    "title": "Activités & centres d’intérêt",
+    "paragraphs": [
+      "Passionné de soccer : pratique régulière pour rester actif et discipliné.",
+      "Jeux vidéo : stratégie, compétition, entraînement et performance sous pression — compétences transférables en planification et travail d’équipe.",
+      "Marque personnelle en ligne : constance, image professionnelle et communication soignée avec une audience."
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "email": "Courriel",
+    "phone": "Téléphone",
+    "footnote": "Références disponibles sur demande."
+  },
+  "print": {
+    "docTitle": "CV — Jesse Tremblay",
+    "footer": "Document généré depuis jesse.tremblay.cv — Saint-Amable, QC"
+  }
+}

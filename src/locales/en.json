@@ -1,0 +1,187 @@
+{
+  "meta": {
+    "title": "Jesse Tremblay — Résumé",
+    "description": "Professional profile — Jesse Tremblay, Saint-Amable, Quebec."
+  },
+  "nav": {
+    "profile": "Profile",
+    "skills": "Skills",
+    "experience": "Experience",
+    "education": "Education",
+    "interests": "Activities",
+    "contact": "Contact",
+    "print": "PDF",
+    "lang": "Language",
+    "themeAria": "Toggle light and dark theme",
+    "themeLight": "Light",
+    "themeDark": "Dark"
+  },
+  "hero": {
+    "location": "Saint-Amable, QC, Canada",
+    "born": "Born November 16, 1997",
+    "mobile": "Own vehicle — full mobility",
+    "ctaPdf": "Export PDF",
+    "ctaMail": "Email",
+    "ctaTel": "Call"
+  },
+  "variants": {
+    "general": {
+      "role": "Versatile candidate — service & administration",
+      "hook": "Fully bilingual, comfortable with technology and numbers, I combine administrative rigour, customer-facing experience, and digital self-sufficiency honed in demanding environments."
+    },
+    "it": {
+      "role": "IT frontline & digital support candidate",
+      "hook": "A self-taught problem-solver with a passion for logic and systems, I learn fast, structure information clearly, and help others fix real issues — in person or remotely."
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "paragraphs": [
+      "Bilingual professional (French and English) with a strong affinity for mathematics, logic, and computing. I enjoy understanding how things work and finding clear solutions — whether with office tools, hardware, or digital platforms.",
+      "My background includes grocery retail (service and operations), administrative support in a family construction business (quotes, professional documents, bookkeeping assistance), and several years of self-employment around competitive gaming and an online presence: streaming, moderation, event planning, and community management.",
+      "I am now looking for a stable role where I can apply my service mindset, attention to detail, and technical curiosity — with the energy and discipline you build through performance and teamwork."
+    ]
+  },
+  "skills": {
+    "title": "Skills",
+    "groups": {
+      "office": {
+        "title": "Office & administration",
+        "items": [
+          "Microsoft Excel and Word",
+          "Professional document writing and formatting",
+          "Data entry, filing, and administrative follow-up",
+          "Preparation of quotes and client binders",
+          "Basic bookkeeping and income/expense tracking (self-employment)"
+        ]
+      },
+      "digital": {
+        "title": "Digital, media & communities",
+        "items": [
+          "OBS Studio and live streaming",
+          "Online community moderation and engagement",
+          "Tournament and event organization",
+          "PC fluency: setup, routine troubleshooting, file organization",
+          "Fast adoption of new tools"
+        ]
+      },
+      "human": {
+        "title": "Interpersonal & leadership",
+        "items": [
+          "Customer service (greeting, guidance, pace management)",
+          "Teamwork and clear communication",
+          "Stress and deadline management (competitive / event settings)",
+          "Decision-making and assertiveness in team settings"
+        ]
+      }
+    },
+    "groupsIt": {
+      "title": "IT emphasis (tech-focused version)",
+      "items": [
+        "Logical troubleshooting and problem decomposition",
+        "Documentation and clear step-by-step guidance for users",
+        "Order and structure: backups, naming, folder hierarchies",
+        "Technical curiosity and self-driven learning",
+        "User support: patience, teaching, follow-through"
+      ]
+    }
+  },
+  "experience": {
+    "title": "Experience",
+    "items": [
+      {
+        "id": "freelance",
+        "title": "Self-employed — competitive gaming & online presence",
+        "org": "Self-employment",
+        "location": "Remote / Quebec",
+        "period": "2016 — present",
+        "bullets": [
+          "Independent activity around competitive gaming: streaming, scheduling, coordination with partners and communities.",
+          "Moderation and rule enforcement in high-volume chat environments.",
+          "Excel and Word for lightweight operations tracking, planning, and content presentation.",
+          "Participation in many tournaments; hands-on help organizing events (light logistics, communication, deadlines).",
+          "Current goal: transition to stable employment and predictable income, transferring those habits of rigour and autonomy."
+        ]
+      },
+      {
+        "id": "iga",
+        "title": "Grocery clerk",
+        "org": "IGA",
+        "location": "Saint-Amable, QC",
+        "period": "2015 — 2016",
+        "bullets": [
+          "Stocking, rotation, and compliance with hygiene and food-safety expectations.",
+          "Customer service: wayfinding, courtesy, and pace in a fast-moving store.",
+          "Teamwork with staff and supervisors to meet priorities and quality standards.",
+          "Safe product handling and attention to detail (dates, facing, signage)."
+        ]
+      },
+      {
+        "id": "construction",
+        "title": "Administrative support (part-time, during studies)",
+        "org": "Meubles & Rénovation JP",
+        "location": "Quebec",
+        "period": "During secondary 4–5 (part-time)",
+        "bullets": [
+          "Bookkeeping assistance: entry, filing, and document tracking.",
+          "Quote preparation and client packages with professional formatting on computer.",
+          "Consistency and tone for written client communications.",
+          "Family business context: confidentiality, versatility, accountability."
+        ]
+      },
+      {
+        "id": "referee",
+        "title": "Soccer referee",
+        "org": "Local leagues & school soccer",
+        "location": "Saint-Amable, QC",
+        "period": "During secondary school (part-time / volunteer)",
+        "bullets": [
+          "Applied league rules, managed timekeeping, and kept matches running smoothly.",
+          "Clear communication with players, coaches, and spectators; kept the environment respectful.",
+          "Quick decisions under pressure with fairness and integrity on the field.",
+          "Punctuality, pre-game preparation, and accountability in a regulated setting."
+        ]
+      }
+    ]
+  },
+  "education": {
+    "title": "Education",
+    "items": [
+      {
+        "school": "École secondaire Demortagne",
+        "detail": "Secondary 4–5 — completed 2014",
+        "note": ""
+      },
+      {
+        "school": "École secondaire François-Williams",
+        "detail": "Secondary 1–3",
+        "note": ""
+      }
+    ]
+  },
+  "languages": {
+    "title": "Languages",
+    "items": [
+      { "name": "French", "level": "Native / fully bilingual" },
+      { "name": "English", "level": "Fully bilingual (spoken and written)" }
+    ]
+  },
+  "interests": {
+    "title": "Activities & interests",
+    "paragraphs": [
+      "Soccer enthusiast — regular play to stay active and disciplined.",
+      "Video games: strategy, competition, practice, and performance under pressure — transferable to planning and teamwork.",
+      "Personal brand online: consistency, professional tone, and thoughtful communication with an audience."
+    ]
+  },
+  "contact": {
+    "title": "Contact",
+    "email": "Email",
+    "phone": "Phone",
+    "footnote": "References available upon request."
+  },
+  "print": {
+    "docTitle": "Résumé — Jesse Tremblay",
+    "footer": "Generated from jesse.tremblay.cv — Saint-Amable, QC"
+  }
+}
