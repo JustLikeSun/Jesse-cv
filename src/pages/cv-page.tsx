@@ -1,7 +1,6 @@
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion, useReducedMotion } from 'framer-motion'
-import { Link } from 'react-router-dom'
 import {
   BriefcaseBusiness,
   Building2,
@@ -39,7 +38,6 @@ import {
 } from '@/components/ui/card'
 import { buttonVariants } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import { useAppParams } from '@/contexts/app-params'
 import { CONTACT } from '@/lib/contact'
 import { staggerContainer, staggerItem } from '@/lib/motion-presets'
 import { cn } from '@/lib/utils'
@@ -102,7 +100,6 @@ function BulletList({ items }: { items: string[] }) {
 
 export function CvPage() {
   const { t, i18n } = useTranslation()
-  const { searchString } = useAppParams()
   const reduceMotion = useReducedMotion()
 
   useEffect(() => {
@@ -208,8 +205,9 @@ export function CvPage() {
           <Phone className="size-4" aria-hidden />
           {t('hero.ctaTel')}
         </a>
-        <Link
-          to={`/print${searchString}`}
+        <a
+          href={i18n.language === 'en' ? '/Jesse_Tremblay_CV_EN.pdf' : '/Jesse_Tremblay_CV.pdf'}
+          download
           className={cn(
             buttonVariants({ variant: 'outline', size: 'sm' }),
             'h-10 rounded-xl px-4 text-[13px] sm:h-11 sm:px-5 sm:text-sm'
@@ -217,7 +215,7 @@ export function CvPage() {
         >
           <Download className="size-4" aria-hidden />
           {t('hero.ctaPdf')}
-        </Link>
+        </a>
       </div>
     </div>
   )

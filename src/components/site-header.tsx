@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import {
   BriefcaseBusiness,
@@ -42,11 +41,12 @@ const headerBtn =
 export function SiteHeader() {
   const { t } = useTranslation()
   const { theme, toggleTheme } = useTheme()
-  const { lang, setLang, searchString } = useAppParams()
+  const { lang, setLang } = useAppParams()
   const [scrolled, setScrolled] = useState(false)
   const [sheetOpen, setSheetOpen] = useState(false)
 
-  const printHref = `/print${searchString}`
+  const { i18n } = useTranslation()
+  const pdfHref = i18n.language === 'en' ? '/Jesse_Tremblay_CV_EN.pdf' : '/Jesse_Tremblay_CV.pdf'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
@@ -116,8 +116,9 @@ export function SiteHeader() {
             <Globe2 className="size-4" aria-hidden />
           </button>
 
-          <Link
-            to={printHref}
+          <a
+            href={pdfHref}
+            download
             title={t('hero.ctaPdf')}
             className={cn(
               buttonVariants({ variant: 'default', size: 'sm' }),
@@ -126,7 +127,7 @@ export function SiteHeader() {
           >
             <Download className="size-4" aria-hidden />
             {t('nav.print')}
-          </Link>
+          </a>
 
           {/* Mobile menu */}
           <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
@@ -193,8 +194,9 @@ export function SiteHeader() {
                 </div>
 
                 {/* PDF button */}
-                <Link
-                  to={printHref}
+                <a
+                  href={pdfHref}
+                  download
                   onClick={closeSheet}
                   className={cn(
                     buttonVariants({ variant: 'default', size: 'default' }),
@@ -203,7 +205,7 @@ export function SiteHeader() {
                 >
                   <Download className="size-4" aria-hidden />
                   {t('nav.print')}
-                </Link>
+                </a>
               </div>
             </SheetContent>
           </Sheet>

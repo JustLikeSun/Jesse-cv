@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { cn } from '@/lib/utils'
 
 const HEADSHOT_SOURCES = [
+  '/jesse-profile.jpg',
   '/jesse-profile.png',
   '/jesse.jpg',
   '/jesse.jpeg',
