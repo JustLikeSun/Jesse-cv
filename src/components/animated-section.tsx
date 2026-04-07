@@ -15,10 +15,10 @@ export function AnimatedSection({ id, className, children }: AnimatedSectionProp
   return (
     <motion.section
       id={id}
-      className={cn('scroll-mt-24', className)}
-      initial={reduce ? false : { opacity: 0, y: 24 }}
+      className={cn('scroll-mt-20', className)}
+      initial={reduce ? false : { opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
+      viewport={{ once: true, margin: '-40px' }}
       transition={
         reduce
           ? { duration: 0 }

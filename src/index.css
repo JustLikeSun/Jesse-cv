@@ -51,7 +51,6 @@
 
 :root {
   --hero-glow: oklch(0.72 0.14 300 / 0.30);
-  --hero-grid: oklch(0.75 0.04 290 / 0.30);
   --background: oklch(0.99 0.008 290);
   --foreground: oklch(0.2 0.03 290);
   --card: oklch(1 0.01 290);
@@ -88,7 +87,6 @@
 
 .dark {
   --hero-glow: oklch(0.45 0.2 300 / 0.35);
-  --hero-grid: oklch(0.16 0.02 290);
   --background: oklch(0.14 0.03 290);
   --foreground: oklch(0.97 0.01 290);
   --card: oklch(0.18 0.035 292);
@@ -125,13 +123,17 @@
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    -webkit-tap-highlight-color: transparent;
   }
   body {
     @apply bg-background text-foreground antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   html {
     @apply font-sans;
     scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
   }
   @media (prefers-reduced-motion: reduce) {
     html {
@@ -144,6 +146,73 @@
   .dark ::selection {
     background: oklch(0.72 0.16 294 / 0.35);
   }
+}
+
+/* Floating gradient blobs */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform;
+}
+
+.blob-1 {
+  width: 500px;
+  height: 500px;
+  top: -8%;
+  left: -5%;
+  background: oklch(0.60 0.16 294 / 0.12);
+  animation: float-1 22s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 400px;
+  height: 400px;
+  top: 30%;
+  right: -8%;
+  background: oklch(0.55 0.12 280 / 0.08);
+  animation: float-2 26s ease-in-out infinite;
+}
+
+.blob-3 {
+  width: 350px;
+  height: 350px;
+  bottom: 10%;
+  left: 15%;
+  background: oklch(0.65 0.10 310 / 0.07);
+  animation: float-3 30s ease-in-out infinite;
+}
+
+.dark .blob-1 {
+  background: oklch(0.50 0.18 294 / 0.10);
+}
+.dark .blob-2 {
+  background: oklch(0.45 0.14 280 / 0.07);
+}
+.dark .blob-3 {
+  background: oklch(0.55 0.12 310 / 0.06);
+}
+
+@keyframes float-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(60px, 40px) scale(1.05); }
+  66% { transform: translate(-30px, 70px) scale(0.95); }
+}
+
+@keyframes float-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-50px, -30px) scale(0.95); }
+  66% { transform: translate(40px, -60px) scale(1.08); }
+}
+
+@keyframes float-3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -50px) scale(1.06); }
+  66% { transform: translate(-60px, 20px) scale(0.94); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob { animation: none !important; }
 }
 
 @page {

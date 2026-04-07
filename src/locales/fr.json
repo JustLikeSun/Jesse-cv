@@ -10,7 +10,7 @@
     "education": "Formation",
     "interests": "Activités",
     "contact": "Contact",
-    "print": "PDF",
+    "print": "Télécharger CV",
     "lang": "Langue",
     "themeAria": "Basculer entre thème clair et sombre",
     "themeLight": "Clair",
@@ -18,28 +18,32 @@
   },
   "hero": {
     "location": "Saint-Amable, QC, Canada",
-    "born": "Né le 16 novembre 1997",
+    "born": "28 ans",
+    "available": "Disponible immédiatement",
     "mobile": "Véhicule personnel — mobilité complète",
-    "ctaPdf": "Exporter en PDF",
-    "ctaMail": "Courriel",
+    "ctaPdf": "Télécharger le CV",
+    "ctaMail": "Envoyer un courriel",
     "ctaTel": "Appeler"
   },
   "variants": {
     "general": {
       "role": "Candidat polyvalent — service & administration",
       "hook": "Bilingue, à l’aise avec la technologie et les chiffres, je combine rigueur administrative, expérience client et autonomie numérique acquise en contexte exigeant."
-    },
-    "it": {
-      "role": "Candidat première ligne TI & support numérique",
-      "hook": "Autodidacte passionné par la logique et les systèmes, j’apprends vite, je structure l’information et j’aide les autres à résoudre des problèmes concrets — en personne ou à distance."
     }
   },
   "profile": {
     "title": "Profil",
     "paragraphs": [
       "Professionnel bilingue (français et anglais) avec une forte affinité pour les mathématiques, la logique et l’informatique. J’aime comprendre comment les choses fonctionnent et trouver des solutions claires, que ce soit avec des outils bureautiques, du matériel ou des environnements numériques.",
-      "Mon parcours inclut de l’expérience en épicerie (service et opérations), du soutien administratif en entreprise familiale (soumissions, documents professionnels, aide à la comptabilité) et plusieurs années en travail autonome autour du jeu compétitif et de la présence en ligne : diffusion, modération, planification d’événements et gestion de communautés.",
+      "Polyvalent, j’ai travaillé en service client (épicerie), en soutien administratif (entreprise familiale) et en travail autonome dans le numérique — diffusion, modération et gestion de communautés.",
       "Je recherche aujourd’hui un rôle stable où je peux mettre à profit mon sens du service, ma rigueur et ma curiosité technique — avec l’énergie et la discipline qu’on cultive en performance et en équipe."
+    ],
+    "traits": [
+      "Ponctuel",
+      "Fiable",
+      "Autonome",
+      "Débrouillard",
+      "Adaptable"
     ]
   },
   "skills": {
@@ -73,17 +77,17 @@
           "Gestion du stress et des échéances (contexte compétitif / événementiel)",
           "Prise de décision et assertivité en contexte d’équipe"
         ]
+      },
+      "logic": {
+        "title": "Logique & résolution de problèmes",
+        "items": [
+          "Forte affinité pour les mathématiques, les chiffres et le raisonnement structuré",
+          "Diagnostic méthodique : décomposer un problème en étapes claires",
+          "Prise de décision rapide basée sur l'analyse (contexte compétitif et événementiel)",
+          "Capacité à documenter et transmettre des solutions de façon claire",
+          "Curiosité technique et apprentissage autonome continu"
+        ]
       }
-    },
-    "groupsIt": {
-      "title": "Accent TI (version informatique)",
-      "items": [
-        "Diagnostic logique et découpage de problèmes",
-        "Documentation et transmission d’étapes claires aux utilisateurs",
-        "Sens de l’ordre : sauvegardes, nommage, structures de dossiers",
-        "Curiosité technique et veille autonome",
-        "Support utilisateur : patience, pédagogie, suivi"
-      ]
     }
   },
   "experience": {
@@ -94,13 +98,13 @@
         "title": "Travailleur autonome — jeu compétitif & présence en ligne",
         "org": "Travail autonome",
         "location": "À distance / Québec",
-        "period": "2016 — présent",
+        "period": "2016 — 2025",
         "bullets": [
           "Gestion d’une activité indépendante autour du jeu compétitif : diffusion, calendrier, coordination avec partenaires et communautés.",
           "Modération, animation et application de règles dans des groupes à fort débit de messages.",
           "Utilisation d’Excel et Word pour le suivi simple des opérations, la planification et la présentation de contenus.",
           "Participation à de nombreux tournois ; implication dans l’organisation d’événements (logistique légère, communication, respect des échéances).",
-          "Objectif actuel : transition vers un emploi stable et un revenu prévisible, en transférant ces habitudes de rigueur et d’autonomie."
+          "En transition vers un emploi stable, en transférant ces acquis de rigueur et d’autonomie dans un nouveau contexte professionnel."
         ]
       },
       {
@@ -148,30 +152,48 @@
     "title": "Formation",
     "items": [
       {
-        "school": "École secondaire Demortagne",
-        "detail": "Secondaire 4–5 — fin en 2014",
-        "note": ""
-      },
-      {
         "school": "École secondaire François-Williams",
         "detail": "Secondaire 1–3",
-        "note": ""
+        "note": "Saint-Amable, QC"
+      },
+      {
+        "school": "École secondaire Demortagne",
+        "detail": "Secondaire 4–5",
+        "note": "Boucherville, QC"
       }
     ]
   },
   "languages": {
     "title": "Langues",
     "items": [
-      { "name": "Français", "level": "Langue maternelle / bilingue complet" },
-      { "name": "Anglais", "level": "Bilingue complet (oral et écrit)" }
+      {
+        "name": "Français",
+        "level": "Langue maternelle / bilingue complet"
+      },
+      {
+        "name": "Anglais",
+        "level": "Bilingue complet (oral et écrit)"
+      }
     ]
   },
   "interests": {
-    "title": "Activités & centres d’intérêt",
-    "paragraphs": [
-      "Passionné de soccer : pratique régulière pour rester actif et discipliné.",
-      "Jeux vidéo : stratégie, compétition, entraînement et performance sous pression — compétences transférables en planification et travail d’équipe.",
-      "Marque personnelle en ligne : constance, image professionnelle et communication soignée avec une audience."
+    "title": "Activités & centres d'intérêt",
+    "items": [
+      {
+        "icon": "soccer",
+        "title": "Soccer",
+        "description": "Pratique régulière pour rester actif, discipliné et compétitif — sur le terrain comme en dehors."
+      },
+      {
+        "icon": "gaming",
+        "title": "Jeux vidéo compétitifs",
+        "description": "Stratégie, compétition, entraînement et performance sous pression — compétences transférables en planification et travail d'équipe."
+      },
+      {
+        "icon": "tech",
+        "title": "Technologie & informatique",
+        "description": "Passionné de tech : construit ses propres ordinateurs depuis toujours, explore le matériel et les logiciels, et résout les problèmes techniques avec méthode et curiosité."
+      }
     ]
   },
   "contact": {

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { ArrowLeft, Printer } from 'lucide-react'
+import { ArrowLeft, Download } from 'lucide-react'
 
 import { Headshot } from '@/components/headshot'
 import { Button, buttonVariants } from '@/components/ui/button'
@@ -24,24 +24,24 @@ type LangItem = { name: string; level: string }
 
 export function PrintPage() {
   const { t, i18n } = useTranslation()
-  const { variant, searchString } = useAppParams()
+  const { searchString } = useAppParams()
 
   useEffect(() => {
     document.title = t('print.docTitle')
     document.documentElement.lang = i18n.language
   }, [t, i18n.language])
 
-  const variantKey = variant === 'it' ? 'it' : 'general'
-  const role = t(`variants.${variantKey}.role`)
+  const role = t('variants.general.role')
 
   const profileParagraphs = t('profile.paragraphs', {
     returnObjects: true,
   }) as string[]
+  const profileTraits = t('profile.traits', { returnObjects: true }) as string[]
 
   const office = t('skills.groups.office', { returnObjects: true }) as SkillGroup
   const digital = t('skills.groups.digital', { returnObjects: true }) as SkillGroup
   const human = t('skills.groups.human', { returnObjects: true }) as SkillGroup
-  const itExtra = t('skills.groupsIt', { returnObjects: true }) as SkillGroup
+  const logic = t('skills.groups.logic', { returnObjects: true }) as SkillGroup
 
   const experienceItems = t('experience.items', {
     returnObjects: true,
@@ -55,9 +55,9 @@ export function PrintPage() {
     returnObjects: true,
   }) as LangItem[]
 
-  const interestParagraphs = t('interests.paragraphs', {
+  const interestItems = t('interests.items', {
     returnObjects: true,
-  }) as string[]
+  }) as { icon: string; title: string; description: string }[]
 
   return (
     <div className="min-h-svh bg-background text-foreground print:bg-white print:text-black">
@@ -70,7 +70,7 @@ export function PrintPage() {
           {i18n.language === 'fr' ? 'Retour' : 'Back'}
         </Link>
         <Button size="sm" onClick={() => window.print()}>
-          <Printer className="size-4" />
+          <Download className="size-4" />
           {t('hero.ctaPdf')}
         </Button>
       </div>
@@ -84,6 +84,9 @@ export function PrintPage() {
             <p className="text-lg text-primary print:text-black">{role}</p>
             <p className="text-sm text-muted-foreground print:text-neutral-700">
               {t('hero.location')} · {t('hero.born')} · {t('hero.mobile')}
+            </p>
+            <p className="text-sm font-medium text-primary print:text-black">
+              {t('hero.available')}
             </p>
             <p className="text-sm">
               {CONTACT.email} · {CONTACT.phoneDisplay}
@@ -109,6 +112,16 @@ export function PrintPage() {
               {p}
             </p>
           ))}
+          <div className="flex flex-wrap gap-2 pt-1">
+            {profileTraits.map((trait) => (
+              <span
+                key={trait}
+                className="inline-flex rounded-full border border-primary/20 bg-primary/5 px-2.5 py-0.5 text-xs font-medium text-primary print:border-neutral-300 print:bg-neutral-100 print:text-neutral-700"
+              >
+                {trait}
+              </span>
+            ))}
+          </div>
         </section>
 
         <section className="mb-8 print:mb-6">
@@ -116,7 +129,7 @@ export function PrintPage() {
             {t('skills.title')}
           </h2>
           <div className="grid gap-4 print:grid-cols-2">
-            {[office, digital, human].map((group) => (
+            {[office, digital, human, logic].map((group) => (
               <div key={group.title}>
                 <h3 className="mb-2 font-medium print:text-black">{group.title}</h3>
                 <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground print:text-neutral-800">
@@ -126,18 +139,6 @@ export function PrintPage() {
                 </ul>
               </div>
             ))}
-            {variant === 'it' ? (
-              <div className="print:col-span-2">
-                <h3 className="mb-2 font-medium text-primary print:text-black">
-                  {itExtra.title}
-                </h3>
-                <ul className="list-disc space-y-1 pl-5 text-sm text-muted-foreground print:text-neutral-800">
-                  {itExtra.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
           </div>
         </section>
 
@@ -191,13 +192,13 @@ export function PrintPage() {
             <h2 className="mb-3 font-display text-lg font-semibold uppercase tracking-wide print:text-black">
               {t('interests.title')}
             </h2>
-            {interestParagraphs.map((p) => (
-              <p
-                key={p.slice(0, 40)}
-                className="mb-2 text-sm leading-relaxed text-muted-foreground print:text-neutral-800"
-              >
-                {p}
-              </p>
+            {interestItems.map((item) => (
+              <div key={item.icon} className="mb-2">
+                <p className="font-medium print:text-black">{item.title}</p>
+                <p className="text-sm leading-relaxed text-muted-foreground print:text-neutral-800">
+                  {item.description}
+                </p>
+              </div>
             ))}
           </div>
         </section>

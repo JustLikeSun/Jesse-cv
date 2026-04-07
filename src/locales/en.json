@@ -10,7 +10,7 @@
     "education": "Education",
     "interests": "Activities",
     "contact": "Contact",
-    "print": "PDF",
+    "print": "Download CV",
     "lang": "Language",
     "themeAria": "Toggle light and dark theme",
     "themeLight": "Light",
@@ -18,28 +18,32 @@
   },
   "hero": {
     "location": "Saint-Amable, QC, Canada",
-    "born": "Born November 16, 1997",
+    "born": "28 years old",
     "mobile": "Own vehicle — full mobility",
-    "ctaPdf": "Export PDF",
-    "ctaMail": "Email",
-    "ctaTel": "Call"
+    "ctaPdf": "Download CV",
+    "ctaMail": "Send an email",
+    "ctaTel": "Call me",
+    "available": "Available immediately"
   },
   "variants": {
     "general": {
       "role": "Versatile candidate — service & administration",
       "hook": "Fully bilingual, comfortable with technology and numbers, I combine administrative rigour, customer-facing experience, and digital self-sufficiency honed in demanding environments."
-    },
-    "it": {
-      "role": "IT frontline & digital support candidate",
-      "hook": "A self-taught problem-solver with a passion for logic and systems, I learn fast, structure information clearly, and help others fix real issues — in person or remotely."
     }
   },
   "profile": {
     "title": "Profile",
     "paragraphs": [
       "Bilingual professional (French and English) with a strong affinity for mathematics, logic, and computing. I enjoy understanding how things work and finding clear solutions — whether with office tools, hardware, or digital platforms.",
-      "My background includes grocery retail (service and operations), administrative support in a family construction business (quotes, professional documents, bookkeeping assistance), and several years of self-employment around competitive gaming and an online presence: streaming, moderation, event planning, and community management.",
+      "I have hands-on experience in customer service (grocery), administrative support (family business), and digital self-employment — streaming, moderation, and community management.",
       "I am now looking for a stable role where I can apply my service mindset, attention to detail, and technical curiosity — with the energy and discipline you build through performance and teamwork."
+    ],
+    "traits": [
+      "Punctual",
+      "Reliable",
+      "Self-starter",
+      "Resourceful",
+      "Adaptable"
     ]
   },
   "skills": {
@@ -73,17 +77,17 @@
           "Stress and deadline management (competitive / event settings)",
           "Decision-making and assertiveness in team settings"
         ]
+      },
+      "logic": {
+        "title": "Logic & problem-solving",
+        "items": [
+          "Strong affinity for mathematics, numbers, and structured reasoning",
+          "Methodical troubleshooting: breaking problems into clear steps",
+          "Fast decision-making based on analysis (competitive and event settings)",
+          "Ability to document and communicate solutions clearly",
+          "Technical curiosity and continuous self-directed learning"
+        ]
       }
-    },
-    "groupsIt": {
-      "title": "IT emphasis (tech-focused version)",
-      "items": [
-        "Logical troubleshooting and problem decomposition",
-        "Documentation and clear step-by-step guidance for users",
-        "Order and structure: backups, naming, folder hierarchies",
-        "Technical curiosity and self-driven learning",
-        "User support: patience, teaching, follow-through"
-      ]
     }
   },
   "experience": {
@@ -94,13 +98,13 @@
         "title": "Self-employed — competitive gaming & online presence",
         "org": "Self-employment",
         "location": "Remote / Quebec",
-        "period": "2016 — present",
+        "period": "2016 — 2025",
         "bullets": [
           "Independent activity around competitive gaming: streaming, scheduling, coordination with partners and communities.",
           "Moderation and rule enforcement in high-volume chat environments.",
           "Excel and Word for lightweight operations tracking, planning, and content presentation.",
           "Participation in many tournaments; hands-on help organizing events (light logistics, communication, deadlines).",
-          "Current goal: transition to stable employment and predictable income, transferring those habits of rigour and autonomy."
+          "Transitioning to stable employment, bringing these habits of rigour and autonomy to a new professional setting."
         ]
       },
       {
@@ -148,30 +152,48 @@
     "title": "Education",
     "items": [
       {
-        "school": "École secondaire Demortagne",
-        "detail": "Secondary 4–5 — completed 2014",
-        "note": ""
-      },
-      {
         "school": "École secondaire François-Williams",
         "detail": "Secondary 1–3",
-        "note": ""
+        "note": "Saint-Amable, QC"
+      },
+      {
+        "school": "École secondaire Demortagne",
+        "detail": "Secondary 4–5",
+        "note": "Boucherville, QC"
       }
     ]
   },
   "languages": {
     "title": "Languages",
     "items": [
-      { "name": "French", "level": "Native / fully bilingual" },
-      { "name": "English", "level": "Fully bilingual (spoken and written)" }
+      {
+        "name": "French",
+        "level": "Native / fully bilingual"
+      },
+      {
+        "name": "English",
+        "level": "Fully bilingual (spoken and written)"
+      }
     ]
   },
   "interests": {
     "title": "Activities & interests",
-    "paragraphs": [
-      "Soccer enthusiast — regular play to stay active and disciplined.",
-      "Video games: strategy, competition, practice, and performance under pressure — transferable to planning and teamwork.",
-      "Personal brand online: consistency, professional tone, and thoughtful communication with an audience."
+    "items": [
+      {
+        "icon": "soccer",
+        "title": "Soccer",
+        "description": "Regular play to stay active, disciplined, and competitive — on and off the field."
+      },
+      {
+        "icon": "gaming",
+        "title": "Competitive gaming",
+        "description": "Strategy, competition, practice, and performance under pressure — transferable to planning and teamwork."
+      },
+      {
+        "icon": "tech",
+        "title": "Technology & computers",
+        "description": "Lifelong tech enthusiast: has always built his own computers, explores hardware and software hands-on, and solves technical problems with patience and logic."
+      }
     ]
   },
   "contact": {

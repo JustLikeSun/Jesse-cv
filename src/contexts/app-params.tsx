@@ -8,13 +8,11 @@ import {
 import { useSearchParams } from 'react-router-dom'
 
 import i18n from '@/i18n'
-import { type ResumeVariant, resolveResumeVariant } from '@/lib/variants'
 
 type Lang = 'fr' | 'en'
 
 type AppParamsValue = {
   lang: Lang
-  variant: ResumeVariant
   setLang: (l: Lang) => void
   searchString: string
 }
@@ -25,7 +23,6 @@ export function AppParamsProvider({ children }: { children: React.ReactNode }) {
   const [searchParams, setSearchParams] = useSearchParams()
 
   const lang: Lang = searchParams.get('lang') === 'en' ? 'en' : 'fr'
-  const variant = resolveResumeVariant(searchParams)
 
   useEffect(() => {
     void i18n.changeLanguage(lang)
@@ -53,11 +50,10 @@ export function AppParamsProvider({ children }: { children: React.ReactNode }) {
   const value = useMemo(
     () => ({
       lang,
-      variant,
       setLang,
       searchString,
     }),
-    [lang, variant, setLang, searchString]
+    [lang, setLang, searchString]
   )
 
   return (

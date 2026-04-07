@@ -1,14 +1,18 @@
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { motion, useReducedMotion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import {
   BriefcaseBusiness,
   Building2,
   CalendarDays,
   Car,
   Check,
-  Code2,
+  CircleCheck,
+  Download,
   FileSpreadsheet,
+  Gamepad2,
+  Goal,
   GraduationCap,
   Languages,
   Layers3,
@@ -17,6 +21,7 @@ import {
   MessagesSquare,
   MonitorSmartphone,
   Phone,
+  Puzzle,
   Sparkles,
   UserRound,
   UsersRound,
@@ -32,6 +37,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
+import { buttonVariants } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { useAppParams } from '@/contexts/app-params'
 import { CONTACT } from '@/lib/contact'
@@ -39,17 +45,17 @@ import { staggerContainer, staggerItem } from '@/lib/motion-presets'
 import { cn } from '@/lib/utils'
 
 /* ------------------------------------------------------------------ */
-/*  Design tokens — one place to tweak for consistency                */
+/*  Design tokens                                                      */
 /* ------------------------------------------------------------------ */
 
 const CARD =
   'rounded-xl border border-border/50 bg-card/50 ring-0 shadow-sm transition-[border-color,background-color,box-shadow] duration-300 hover:border-border/80 hover:bg-card/80 hover:shadow-md dark:bg-card/30 dark:hover:bg-card/50'
 
 const BADGE_PILL =
-  'inline-flex h-7 items-center gap-1.5 rounded-full border border-border/50 bg-muted/40 px-3 text-xs font-medium text-muted-foreground'
+  'inline-flex h-7 items-center gap-1.5 rounded-full border border-border/50 bg-muted/40 px-2.5 text-[11px] font-medium text-muted-foreground sm:px-3 sm:text-xs'
 
 const BODY_TEXT =
-  'text-[15px] leading-[1.7] text-muted-foreground md:text-base md:leading-[1.75]'
+  'text-[14px] leading-[1.65] text-muted-foreground sm:text-[15px] sm:leading-[1.7] md:text-base md:leading-[1.75]'
 
 const ICON_CHIP =
   'flex size-9 shrink-0 items-center justify-center rounded-xl border border-border/50 bg-muted/40 text-primary/70'
@@ -69,21 +75,20 @@ type ExperienceItem = {
 }
 type EducationItem = { school: string; detail: string; note: string }
 type LangItem = { name: string; level: string }
+type InterestItem = { icon: string; title: string; description: string }
 
 /* ------------------------------------------------------------------ */
-/*  Shared components                                                  */
+/*  Shared                                                             */
 /* ------------------------------------------------------------------ */
 
 function BulletList({ items }: { items: string[] }) {
   return (
-    <ul className="space-y-2.5">
+    <ul className="space-y-2 sm:space-y-2.5">
       {items.map((item) => (
-        <li key={item} className="flex gap-2.5 text-pretty">
-          <Check
-            className="mt-[3px] size-3.5 shrink-0 text-primary/50"
-            strokeWidth={2.5}
-            aria-hidden
-          />
+        <li key={item} className="flex items-start gap-2 text-pretty sm:gap-2.5">
+          <span className="inline-flex h-[23px] shrink-0 items-center text-primary/50 sm:h-[26px] md:h-7">
+            <Check className="size-3.5" strokeWidth={2.5} aria-hidden />
+          </span>
           <span className={BODY_TEXT}>{item}</span>
         </li>
       ))}
@@ -97,7 +102,7 @@ function BulletList({ items }: { items: string[] }) {
 
 export function CvPage() {
   const { t, i18n } = useTranslation()
-  const { variant } = useAppParams()
+  const { searchString } = useAppParams()
   const reduceMotion = useReducedMotion()
 
   useEffect(() => {
@@ -105,66 +110,37 @@ export function CvPage() {
     document.documentElement.lang = i18n.language
   }, [t, i18n.language])
 
-  const v = variant === 'it' ? 'it' : 'general'
-  const role = t(`variants.${v}.role`)
-  const hook = t(`variants.${v}.hook`)
+  const role = t('variants.general.role')
+  const hook = t('variants.general.hook')
 
   const profileParagraphs = t('profile.paragraphs', { returnObjects: true }) as string[]
+  const profileTraits = t('profile.traits', { returnObjects: true }) as string[]
   const office = t('skills.groups.office', { returnObjects: true }) as SkillGroup
   const digital = t('skills.groups.digital', { returnObjects: true }) as SkillGroup
   const human = t('skills.groups.human', { returnObjects: true }) as SkillGroup
-  const itExtra = t('skills.groupsIt', { returnObjects: true }) as SkillGroup
+  const logic = t('skills.groups.logic', { returnObjects: true }) as SkillGroup
   const experienceItems = t('experience.items', { returnObjects: true }) as ExperienceItem[]
   const educationItems = t('education.items', { returnObjects: true }) as EducationItem[]
   const langItems = t('languages.items', { returnObjects: true }) as LangItem[]
-  const interestParagraphs = t('interests.paragraphs', { returnObjects: true }) as string[]
+  const interestItems = t('interests.items', { returnObjects: true }) as InterestItem[]
+
+  const interestIcons: Record<string, typeof Goal> = {
+    soccer: Goal,
+    gaming: Gamepad2,
+    tech: MonitorSmartphone,
+  }
 
   const skillBlocks: { group: SkillGroup; icon: typeof FileSpreadsheet }[] = [
     { group: office, icon: FileSpreadsheet },
     { group: digital, icon: MonitorSmartphone },
     { group: human, icon: UsersRound },
+    { group: logic, icon: Puzzle },
   ]
 
   /* ---- Hero ---- */
 
-  const heroLeft = (
-    <div className="space-y-8 text-left">
-      <div className="space-y-5">
-        <p className="flex items-center gap-2 text-xs font-medium uppercase tracking-widest text-muted-foreground">
-          <MapPin className="size-3.5 text-primary/60" aria-hidden />
-          {t('hero.location')}
-        </p>
-        <h1 className="font-display text-4xl font-semibold tracking-tight md:text-5xl">
-          Jesse Tremblay
-        </h1>
-        <p className="font-display text-lg font-medium text-primary md:text-xl">
-          {role}
-        </p>
-        <p className={cn(BODY_TEXT, 'max-w-lg md:text-[17px]')}>
-          {hook}
-        </p>
-      </div>
-      <div className="flex flex-wrap gap-2">
-        <span className={BADGE_PILL}>
-          <CalendarDays className="size-3.5 text-primary/60" aria-hidden />
-          {t('hero.born')}
-        </span>
-        {langItems.map((l) => (
-          <span key={l.name} className={BADGE_PILL}>
-            <Languages className="size-3.5 text-primary/60" aria-hidden />
-            {l.name}
-          </span>
-        ))}
-        <span className={BADGE_PILL}>
-          <Car className="size-3.5 text-primary/60" aria-hidden />
-          {t('hero.mobile')}
-        </span>
-      </div>
-    </div>
-  )
-
-  const heroRight = (
-    <div className="relative mx-auto w-full max-w-[240px] md:mx-0 md:max-w-[260px]">
+  const heroPhoto = (
+    <div className="relative mx-auto w-full max-w-[180px] sm:max-w-[220px] md:mx-0 md:max-w-[260px]">
       <div
         className="pointer-events-none absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/12 to-transparent blur-2xl dark:from-primary/16"
         aria-hidden
@@ -173,43 +149,105 @@ export function CvPage() {
     </div>
   )
 
+  const heroText = (
+    <div className="space-y-5 text-center sm:space-y-6 md:space-y-8 md:text-left">
+      <div className="space-y-3 sm:space-y-4 md:space-y-5">
+        <p className="flex items-center justify-center gap-2 text-[11px] font-medium uppercase tracking-widest text-muted-foreground sm:text-xs md:justify-start">
+          <MapPin className="size-3.5 text-primary/60" aria-hidden />
+          {t('hero.location')}
+        </p>
+        <h1 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl">
+          Jesse Tremblay
+        </h1>
+        <p className="font-display text-base font-medium text-primary sm:text-lg md:text-xl">
+          {role}
+        </p>
+        <p className={cn(BODY_TEXT, 'mx-auto max-w-lg md:mx-0 md:text-[17px]')}>
+          {hook}
+        </p>
+      </div>
+      <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 md:justify-start">
+        <span className="inline-flex h-7 items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400 sm:px-3 sm:text-xs">
+          <CircleCheck className="size-3 sm:size-3.5" aria-hidden />
+          {t('hero.available')}
+        </span>
+        <span className={BADGE_PILL}>
+          <CalendarDays className="size-3 text-primary/60 sm:size-3.5" aria-hidden />
+          {t('hero.born')}
+        </span>
+        {langItems.map((l) => (
+          <span key={l.name} className={BADGE_PILL}>
+            <Languages className="size-3 text-primary/60 sm:size-3.5" aria-hidden />
+            {l.name}
+          </span>
+        ))}
+        <span className={BADGE_PILL}>
+          <Car className="size-3 text-primary/60 sm:size-3.5" aria-hidden />
+          {t('hero.mobile')}
+        </span>
+      </div>
+      {/* CTAs */}
+      <div className="flex flex-wrap justify-center gap-2 sm:gap-2.5 md:justify-start">
+        <a
+          href={`mailto:${CONTACT.email}`}
+          className={cn(
+            buttonVariants({ variant: 'default', size: 'sm' }),
+            'h-10 rounded-xl px-4 text-[13px] sm:h-11 sm:px-5 sm:text-sm'
+          )}
+        >
+          <Mail className="size-4" aria-hidden />
+          {t('hero.ctaMail')}
+        </a>
+        <a
+          href={`tel:${CONTACT.phoneE164}`}
+          className={cn(
+            buttonVariants({ variant: 'outline', size: 'sm' }),
+            'h-10 rounded-xl px-4 text-[13px] sm:h-11 sm:px-5 sm:text-sm'
+          )}
+        >
+          <Phone className="size-4" aria-hidden />
+          {t('hero.ctaTel')}
+        </a>
+        <Link
+          to={`/print${searchString}`}
+          className={cn(
+            buttonVariants({ variant: 'outline', size: 'sm' }),
+            'h-10 rounded-xl px-4 text-[13px] sm:h-11 sm:px-5 sm:text-sm'
+          )}
+        >
+          <Download className="size-4" aria-hidden />
+          {t('hero.ctaPdf')}
+        </Link>
+      </div>
+    </div>
+  )
+
   const heroGrid =
-    'grid items-start gap-12 md:grid-cols-[1fr_260px] md:gap-16'
+    'flex flex-col items-center gap-8 sm:gap-10 md:grid md:grid-cols-[1fr_260px] md:items-start md:gap-16'
 
   /* ---- Render ---- */
 
   return (
-    <div id="top" className="relative min-h-svh bg-background text-foreground">
-      {/* Background layers */}
-      <div
-        className="pointer-events-none fixed inset-0 -z-10"
-        aria-hidden
-        style={{
-          background:
-            'radial-gradient(1100px 550px at 50% -12%, var(--hero-glow), transparent 55%)',
-        }}
-      />
-      <div
-        className="pointer-events-none fixed inset-0 -z-10 opacity-25 dark:opacity-20"
-        aria-hidden
-        style={{
-          backgroundImage: `
-            linear-gradient(var(--hero-grid) 1px, transparent 1px),
-            linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px)
-          `,
-          backgroundSize: '64px 64px',
-          maskImage: 'radial-gradient(ellipse 80% 60% at 50% 30%, black 15%, transparent 65%)',
-        }}
-      />
+    <div
+      id="top"
+      className="relative min-h-svh text-foreground"
+    >
+      {/* Floating gradient blobs — sits between body bg and content */}
+      <div className="pointer-events-none fixed inset-0 overflow-hidden" aria-hidden>
+        <div className="blob blob-1" />
+        <div className="blob blob-2" />
+        <div className="blob blob-3" />
+      </div>
 
+      <div className="relative z-10">
       <SiteHeader />
 
-      <main className="mx-auto w-full max-w-[56rem] px-6 pb-32 pt-12 md:px-8 md:pt-16">
-        {/* Hero */}
+      <main className="mx-auto w-full max-w-[56rem] px-4 pb-20 pt-8 sm:px-6 sm:pb-28 sm:pt-10 md:px-8 md:pb-32 md:pt-16">
+        {/* Hero — photo first on mobile for visual impact */}
         {reduceMotion ? (
           <section className={heroGrid}>
-            {heroLeft}
-            {heroRight}
+            <div className="order-1 md:order-2">{heroPhoto}</div>
+            <div className="order-2 md:order-1">{heroText}</div>
           </section>
         ) : (
           <motion.section
@@ -218,25 +256,36 @@ export function CvPage() {
             initial="hidden"
             animate="visible"
           >
-            <motion.div variants={staggerItem}>{heroLeft}</motion.div>
-            <motion.div variants={staggerItem}>{heroRight}</motion.div>
+            <motion.div className="order-1 md:order-2" variants={staggerItem}>{heroPhoto}</motion.div>
+            <motion.div className="order-2 md:order-1" variants={staggerItem}>{heroText}</motion.div>
           </motion.section>
         )}
 
-        <Separator className="my-16 h-px bg-gradient-to-r from-transparent via-border to-transparent md:my-20" />
+        <Separator className="my-10 h-px bg-gradient-to-r from-transparent via-border to-transparent sm:my-14 md:my-20" />
 
         {/* Sections */}
-        <div className="flex flex-col gap-20 md:gap-24">
+        <div className="flex flex-col gap-14 sm:gap-18 md:gap-24">
           {/* -- Profile -- */}
           <AnimatedSection id="profile">
             <SectionHeading id="profile-title" icon={UserRound}>
               {t('profile.title')}
             </SectionHeading>
-            <div className={cn('space-y-5 text-left', BODY_TEXT)}>
+            <div className={cn('space-y-4 text-left sm:space-y-5', BODY_TEXT)}>
               {profileParagraphs.map((p) => (
                 <p key={p.slice(0, 48)} className="text-pretty">
                   {p}
                 </p>
+              ))}
+            </div>
+            <div className="mt-5 flex flex-wrap gap-2 sm:mt-6">
+              {profileTraits.map((trait) => (
+                <span
+                  key={trait}
+                  className="inline-flex h-7 items-center gap-1.5 rounded-full border border-primary/20 bg-primary/5 px-3 text-[11px] font-semibold tracking-wide text-primary/80 sm:text-xs"
+                >
+                  <Check className="size-3 text-primary/50" strokeWidth={2.5} aria-hidden />
+                  {trait}
+                </span>
               ))}
             </div>
           </AnimatedSection>
@@ -246,47 +295,22 @@ export function CvPage() {
             <SectionHeading id="skills-title" icon={Layers3}>
               {t('skills.title')}
             </SectionHeading>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
               {skillBlocks.map(({ group, icon: Ico }) => (
                 <Card key={group.title} className={CARD}>
-                  <CardHeader className="flex-row items-start gap-3 space-y-0 pb-4">
+                  <CardHeader className="flex-row items-start gap-3 space-y-0 px-4 pb-3 pt-4 sm:px-6 sm:pb-4 sm:pt-6">
                     <span className={ICON_CHIP}>
                       <Ico className="size-4" strokeWidth={1.75} aria-hidden />
                     </span>
-                    <CardTitle className="pt-1 font-display text-[15px] font-semibold tracking-tight">
+                    <CardTitle className="pt-1 font-display text-[14px] font-semibold tracking-tight sm:text-[15px]">
                       {group.title}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="pt-0">
+                  <CardContent className="px-4 pt-0 pb-4 sm:px-6 sm:pb-6">
                     <BulletList items={group.items} />
                   </CardContent>
                 </Card>
               ))}
-              {variant === 'it' ? (
-                <Card
-                  className={cn(
-                    CARD,
-                    'border-primary/25 bg-primary/[0.04] sm:col-span-2 dark:bg-primary/[0.06]'
-                  )}
-                >
-                  <CardHeader className="flex-row items-start gap-3 space-y-0 pb-4">
-                    <span className={cn(ICON_CHIP, 'border-primary/25 bg-primary/8 text-primary')}>
-                      <Code2 className="size-4" strokeWidth={1.75} aria-hidden />
-                    </span>
-                    <div className="min-w-0 pt-1">
-                      <CardTitle className="font-display text-[15px] font-semibold tracking-tight text-primary">
-                        {itExtra.title}
-                      </CardTitle>
-                      <p className="mt-1 text-xs text-muted-foreground">
-                        {t('variants.it.role')}
-                      </p>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <BulletList items={itExtra.items} />
-                  </CardContent>
-                </Card>
-              ) : null}
             </div>
           </AnimatedSection>
 
@@ -297,41 +321,41 @@ export function CvPage() {
             </SectionHeading>
             <div className="relative">
               <div
-                className="absolute top-2 bottom-2 left-[11px] hidden w-px bg-gradient-to-b from-primary/20 via-border to-transparent md:block"
+                className="absolute top-2 bottom-2 left-0 w-px bg-gradient-to-b from-primary/15 via-border/60 to-transparent md:left-[11px] md:from-primary/20 md:via-border"
                 aria-hidden
               />
-              <div className="space-y-5 md:pl-8">
+              <div className="space-y-3 pl-4 sm:space-y-4 sm:pl-5 md:space-y-5 md:pl-8">
                 {experienceItems.map((job) => (
                   <Card key={job.id} className={cn(CARD, 'relative text-left')}>
                     <span
-                      className="absolute -left-[21px] top-7 hidden size-2 rounded-full bg-primary/60 ring-[3px] ring-background md:block"
+                      className="absolute -left-[9.5px] top-7 size-[7px] rounded-full bg-primary/50 ring-[3px] ring-background sm:-left-[12px] sm:size-2 md:-left-[21px] md:bg-primary/60"
                       aria-hidden
                     />
-                    <CardHeader className="pb-4">
-                      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
-                        <div className="min-w-0 space-y-1.5">
-                          <CardTitle className="font-display text-base font-semibold tracking-tight">
+                    <CardHeader className="px-4 pb-3 pt-4 sm:px-6 sm:pb-4 sm:pt-6">
+                      <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+                        <div className="min-w-0 space-y-1">
+                          <CardTitle className="font-display text-[15px] font-semibold tracking-tight sm:text-base">
                             {job.title}
                           </CardTitle>
-                          <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+                          <p className="flex flex-wrap items-center gap-x-2 gap-y-0.5 text-[13px] text-muted-foreground sm:text-sm">
                             <span className="inline-flex items-center gap-1.5">
-                              <Building2 className="size-3.5 text-primary/50" aria-hidden />
+                              <Building2 className="size-3 text-primary/50 sm:size-3.5" aria-hidden />
                               {job.org}
                             </span>
                             <span className="hidden sm:inline" aria-hidden>·</span>
                             <span className="inline-flex items-center gap-1.5">
-                              <MapPin className="size-3.5 text-primary/40" aria-hidden />
+                              <MapPin className="size-3 text-primary/40 sm:size-3.5" aria-hidden />
                               {job.location}
                             </span>
                           </p>
                         </div>
                         <span className={cn(BADGE_PILL, 'shrink-0')}>
-                          <CalendarDays className="size-3.5 text-primary/50" aria-hidden />
+                          <CalendarDays className="size-3 text-primary/50 sm:size-3.5" aria-hidden />
                           {job.period}
                         </span>
                       </div>
                     </CardHeader>
-                    <CardContent className="pt-0">
+                    <CardContent className="px-4 pt-0 pb-4 sm:px-6 sm:pb-6">
                       <BulletList items={job.bullets} />
                     </CardContent>
                   </Card>
@@ -345,25 +369,26 @@ export function CvPage() {
             <SectionHeading id="education-title" icon={GraduationCap}>
               {t('education.title')}
             </SectionHeading>
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
               {educationItems.map((ed) => (
                 <Card key={ed.school} className={cn(CARD, 'text-left')}>
-                  <CardHeader className="flex-row items-start gap-3 space-y-0">
-                    <GraduationCap
-                      className="mt-0.5 size-5 shrink-0 text-primary/50"
-                      strokeWidth={1.75}
-                      aria-hidden
-                    />
-                    <div className="min-w-0 space-y-1">
-                      <CardTitle className="font-display text-[15px] font-semibold tracking-tight">
+                  <CardHeader className="flex-row items-start gap-3 space-y-0 px-4 pb-3 pt-4 sm:px-6 sm:pb-4 sm:pt-6">
+                    <span className={ICON_CHIP}>
+                      <GraduationCap className="size-4" strokeWidth={1.75} aria-hidden />
+                    </span>
+                    <div className="min-w-0 space-y-1 pt-1">
+                      <CardTitle className="font-display text-[14px] font-semibold tracking-tight sm:text-[15px]">
                         {ed.school}
                       </CardTitle>
-                      <p className="text-sm text-muted-foreground">{ed.detail}</p>
+                      <p className="text-[13px] text-muted-foreground sm:text-sm">{ed.detail}</p>
                     </div>
                   </CardHeader>
                   {ed.note ? (
-                    <CardContent className="pt-0">
-                      <p className="text-sm text-muted-foreground">{ed.note}</p>
+                    <CardContent className="px-4 pt-0 pb-4 sm:px-6 sm:pb-6">
+                      <p className="flex items-center gap-1.5 text-[13px] text-muted-foreground sm:text-sm">
+                        <MapPin className="size-3 text-primary/40" aria-hidden />
+                        {ed.note}
+                      </p>
                     </CardContent>
                   ) : null}
                 </Card>
@@ -376,19 +401,36 @@ export function CvPage() {
             <SectionHeading id="interests-title" icon={Sparkles}>
               {t('interests.title')}
             </SectionHeading>
-            <div className={cn('space-y-4 text-left', BODY_TEXT)}>
-              {interestParagraphs.map((p) => (
-                <p key={p.slice(0, 40)} className="text-pretty">
-                  {p}
-                </p>
-              ))}
+            <div className="grid gap-3 sm:grid-cols-3 sm:gap-4">
+              {interestItems.map((item) => {
+                const Ico = interestIcons[item.icon] ?? Sparkles
+                return (
+                  <div
+                    key={item.icon}
+                    className={cn(
+                      CARD,
+                      'flex flex-col items-center px-4 py-5 text-center sm:px-5 sm:py-6'
+                    )}
+                  >
+                    <span className={cn(ICON_CHIP, 'mb-3 size-11 rounded-2xl sm:mb-4 sm:size-12')}>
+                      <Ico className="size-5 sm:size-[22px]" strokeWidth={1.6} aria-hidden />
+                    </span>
+                    <h3 className="font-display text-[14px] font-semibold tracking-tight sm:text-[15px]">
+                      {item.title}
+                    </h3>
+                    <p className={cn(BODY_TEXT, 'mt-1.5 text-[13px] sm:text-[14px]')}>
+                      {item.description}
+                    </p>
+                  </div>
+                )
+              })}
             </div>
           </AnimatedSection>
 
           {/* -- Contact -- */}
           <AnimatedSection
             id="contact"
-            className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/[0.05] to-transparent p-6 dark:from-primary/[0.08] md:p-8"
+            className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/[0.05] to-transparent p-4 dark:from-primary/[0.08] sm:p-6 md:p-8"
           >
             <SectionHeading
               id="contact-title"
@@ -399,7 +441,7 @@ export function CvPage() {
               {t('contact.title')}
             </SectionHeading>
 
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-2.5 sm:grid-cols-2 sm:gap-3">
               {[
                 {
                   href: `mailto:${CONTACT.email}`,
@@ -415,29 +457,30 @@ export function CvPage() {
                 <a
                   key={href}
                   href={href}
-                  className="group flex items-center gap-3 rounded-xl border border-border/50 bg-background/70 px-4 py-3.5 text-sm font-medium transition-colors duration-150 hover:border-primary/30 hover:bg-background"
+                  className="group flex items-center gap-3 rounded-xl border border-border/50 bg-background/70 px-3.5 py-3 text-[13px] font-medium transition-colors duration-150 hover:border-primary/30 hover:bg-background sm:px-4 sm:py-3.5 sm:text-sm"
                 >
                   <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary/8 text-primary transition-colors group-hover:bg-primary/12">
                     <Ico className="size-4" aria-hidden />
                   </span>
-                  <span className="min-w-0 break-all">{label}</span>
+                  <span className="min-w-0 break-words">{label}</span>
                 </a>
               ))}
-              <div className="flex items-center gap-3 rounded-xl border border-dashed border-border/50 bg-background/40 px-4 py-3.5 text-sm text-muted-foreground sm:col-span-2 lg:col-span-1">
+              <div className="flex items-center gap-3 rounded-xl border border-dashed border-border/50 bg-background/40 px-3.5 py-3 text-[13px] text-muted-foreground sm:col-span-2 sm:px-4 sm:py-3.5 sm:text-sm">
                 <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-muted/50 text-primary/60">
                   <MapPin className="size-4" aria-hidden />
                 </span>
                 {t('hero.location')}
               </div>
             </div>
-            <p className="mt-6 text-xs text-muted-foreground">{t('contact.footnote')}</p>
+            <p className="mt-4 text-[11px] text-muted-foreground sm:mt-6 sm:text-xs">{t('contact.footnote')}</p>
           </AnimatedSection>
         </div>
       </main>
 
-      <footer className="no-print border-t border-border/30 py-10 text-center text-xs font-medium tracking-wide text-muted-foreground/70">
+      <footer className="no-print border-t border-border/30 px-4 py-8 text-center text-[11px] font-medium tracking-wide text-muted-foreground/70 sm:py-10 sm:text-xs">
         © {new Date().getFullYear()} Jesse Tremblay · {t('hero.location')}
       </footer>
+      </div>
     </div>
   )
 }
