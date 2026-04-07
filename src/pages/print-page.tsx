@@ -19,13 +19,13 @@ const D = '#0f172a'
 const T = '#334155'
 
 const sec: React.CSSProperties = {
-  margin: '0 0 10px',
-  fontSize: 13,
+  margin: '0 0 7px',
+  fontSize: 12,
   fontWeight: 700,
   textTransform: 'uppercase',
   letterSpacing: '0.06em',
   color: D,
-  paddingBottom: 6,
+  paddingBottom: 4,
   borderBottom: `2px solid ${A}`,
 }
 
@@ -44,9 +44,9 @@ const printStyles = `
   @page { size: letter; margin: 0; }
   @media print {
     html, body { margin: 0; padding: 0; background: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-    .print-page { width: 8.5in !important; height: 11in !important; margin: 0 !important; padding: 32px 40px 24px !important; box-shadow: none !important; border-radius: 0 !important; overflow: hidden !important; }
+    .print-wrapper { padding: 0 !important; margin: 0 !important; min-height: 0 !important; background: #fff !important; }
+    .print-page { width: 8.5in !important; height: 11in !important; margin: 0 !important; padding: 24px 36px 16px !important; box-shadow: none !important; border-radius: 0 !important; overflow: hidden !important; }
     .print-page-break { break-after: page; page-break-after: always; }
-    .print-screen-only { display: none !important; }
   }
 `
 
@@ -57,9 +57,9 @@ const page: React.CSSProperties = {
   background: '#fff',
   color: T,
   fontFamily: "'Outfit','Geist Variable',system-ui,-apple-system,sans-serif",
-  fontSize: 12.5,
-  lineHeight: 1.5,
-  padding: '32px 40px 24px',
+  fontSize: 11,
+  lineHeight: 1.4,
+  padding: '24px 36px 16px',
   boxSizing: 'border-box',
   overflow: 'hidden',
 }
@@ -87,7 +87,7 @@ export function PrintPage() {
   const interests = t('interests.items', { returnObjects: true }) as InterestItem[]
 
   return (
-    <div style={{ background: '#f1f5f9', minHeight: '100vh', padding: '24px 0' }}>
+    <div className="print-wrapper" style={{ background: '#f1f5f9', minHeight: '100vh', padding: '24px 0' }}>
       <style dangerouslySetInnerHTML={{ __html: printStyles }} />
 
       {/* ─── PAGE 1 — RECTO ─── */}
@@ -104,43 +104,43 @@ export function PrintPage() {
         }}
       >
         {/* Header */}
-        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 20, marginBottom: 18, paddingBottom: 14, borderBottom: `2.5px solid ${A}` }}>
+        <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, marginBottom: 12, paddingBottom: 10, borderBottom: `2.5px solid ${A}` }}>
           <div style={{ flex: 1 }}>
-            <h1 style={{ margin: 0, fontSize: 28, fontWeight: 700, letterSpacing: '-0.02em', color: D }}>
+            <h1 style={{ margin: 0, fontSize: 24, fontWeight: 700, letterSpacing: '-0.02em', color: D }}>
               Jesse Tremblay
             </h1>
-            <p style={{ margin: '3px 0 0', fontSize: 14, fontWeight: 600, color: A }}>{role}</p>
-            <p style={{ margin: '5px 0 0', fontSize: 11.5, color: M }}>
+            <p style={{ margin: '2px 0 0', fontSize: 12.5, fontWeight: 600, color: A }}>{role}</p>
+            <p style={{ margin: '4px 0 0', fontSize: 10.5, color: M }}>
               {t('hero.location')} · {t('hero.born')} · {t('hero.mobile')}
             </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14, marginTop: 8, fontSize: 11.5 }}>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                <Mail style={{ width: 11, height: 11, color: A }} />{CONTACT.email}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginTop: 6, fontSize: 10.5 }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 3 }}>
+                <Mail style={{ width: 10, height: 10, color: A }} />{CONTACT.email}
               </span>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                <Phone style={{ width: 11, height: 11, color: A }} />{CONTACT.phoneDisplay}
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 3 }}>
+                <Phone style={{ width: 10, height: 10, color: A }} />{CONTACT.phoneDisplay}
               </span>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                <Globe2 style={{ width: 11, height: 11, color: A }} />
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 3 }}>
+                <Globe2 style={{ width: 10, height: 10, color: A }} />
                 {langs.map(l => l.name).join(' / ')}
               </span>
             </div>
-            <span style={{ display: 'inline-block', marginTop: 7, fontSize: 10, fontWeight: 700, color: '#059669', background: '#ecfdf5', border: '1px solid #a7f3d0', borderRadius: 999, padding: '1px 10px' }}>
+            <span style={{ display: 'inline-block', marginTop: 5, fontSize: 9, fontWeight: 700, color: '#059669', background: '#ecfdf5', border: '1px solid #a7f3d0', borderRadius: 999, padding: '1px 8px' }}>
               {t('hero.available')}
             </span>
           </div>
-          <div style={{ width: 82, height: 82, borderRadius: 10, overflow: 'hidden', flexShrink: 0, border: `2px solid ${B}` }}>
+          <div style={{ width: 72, height: 72, borderRadius: 10, overflow: 'hidden', flexShrink: 0, border: `2px solid ${B}` }}>
             <Headshot className="size-full max-h-none max-w-none" name="Jesse Tremblay" />
           </div>
         </div>
 
         {/* Profile */}
-        <section style={{ marginBottom: 18 }}>
+        <section style={{ marginBottom: 10 }}>
           <h2 style={sec}>{t('profile.title')}</h2>
           {paras.map(p => (
-            <p key={p.slice(0, 30)} style={{ margin: '0 0 5px', lineHeight: 1.55 }}>{p}</p>
+            <p key={p.slice(0, 30)} style={{ margin: '0 0 3px', lineHeight: 1.45 }}>{p}</p>
           ))}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5, marginTop: 8 }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, marginTop: 5 }}>
             {traits.map(tr => (
               <span key={tr} style={pill}>{tr}</span>
             ))}
@@ -150,12 +150,12 @@ export function PrintPage() {
         {/* Skills */}
         <section style={{ flex: 1 }}>
           <h2 style={sec}>{t('skills.title')}</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px 20px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px 16px' }}>
             {groups.map(g => (
               <div key={g.title}>
-                <h3 style={{ margin: '0 0 3px', fontSize: 12, fontWeight: 700, color: D }}>{g.title}</h3>
-                <ul style={{ margin: 0, paddingLeft: 14, lineHeight: 1.5 }}>
-                  {g.items.map(item => <li key={item} style={{ marginBottom: 1.5 }}>{item}</li>)}
+                <h3 style={{ margin: '0 0 2px', fontSize: 10.5, fontWeight: 700, color: D }}>{g.title}</h3>
+                <ul style={{ margin: 0, paddingLeft: 13, lineHeight: 1.4 }}>
+                  {g.items.map(item => <li key={item} style={{ marginBottom: 0.5 }}>{item}</li>)}
                 </ul>
               </div>
             ))}
@@ -163,11 +163,11 @@ export function PrintPage() {
         </section>
 
         {/* Languages */}
-        <section style={{ marginTop: 18 }}>
+        <section style={{ marginTop: 12 }}>
           <h2 style={sec}>{t('languages.title')}</h2>
-          <div style={{ display: 'flex', gap: 28 }}>
+          <div style={{ display: 'flex', gap: 24 }}>
             {langs.map(l => (
-              <div key={l.name} style={{ fontSize: 12 }}>
+              <div key={l.name} style={{ fontSize: 11 }}>
                 <span style={{ fontWeight: 700, color: D }}>{l.name}</span>
                 <span style={{ color: M, marginLeft: 6 }}>— {l.level}</span>
               </div>
@@ -193,7 +193,7 @@ export function PrintPage() {
         }}
       >
         {/* Mini header repeat */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, paddingBottom: 10, borderBottom: `2.5px solid ${A}` }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12, paddingBottom: 8, borderBottom: `2.5px solid ${A}` }}>
           <div>
             <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700, color: D }}>Jesse Tremblay</h1>
             <p style={{ margin: '1px 0 0', fontSize: 11.5, fontWeight: 600, color: A }}>{role}</p>
@@ -205,21 +205,21 @@ export function PrintPage() {
         </div>
 
         {/* Experience */}
-        <section style={{ marginBottom: 18, flex: 1 }}>
+        <section style={{ marginBottom: 14, flex: 1 }}>
           <h2 style={sec}>{t('experience.title')}</h2>
           {jobs.map((job, i) => (
-            <div key={job.id} style={{ marginBottom: i < jobs.length - 1 ? 12 : 0, paddingBottom: i < jobs.length - 1 ? 12 : 0, borderBottom: i < jobs.length - 1 ? `1px solid ${B}` : 'none' }}>
+            <div key={job.id} style={{ marginBottom: i < jobs.length - 1 ? 9 : 0, paddingBottom: i < jobs.length - 1 ? 9 : 0, borderBottom: i < jobs.length - 1 ? `1px solid ${B}` : 'none' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 8 }}>
                 <div>
-                  <h3 style={{ margin: 0, fontSize: 12.5, fontWeight: 700, color: D }}>{job.title}</h3>
-                  <p style={{ margin: '2px 0 0', fontSize: 11.5, color: M }}>
+                  <h3 style={{ margin: 0, fontSize: 12, fontWeight: 700, color: D }}>{job.title}</h3>
+                  <p style={{ margin: '1px 0 0', fontSize: 11, color: M }}>
                     {job.org} — {job.location}
                   </p>
                 </div>
                 <span style={{ ...pill, flexShrink: 0, whiteSpace: 'nowrap' }}>{job.period}</span>
               </div>
-              <ul style={{ margin: '4px 0 0', paddingLeft: 14, lineHeight: 1.5 }}>
-                {job.bullets.map(b => <li key={b} style={{ marginBottom: 1.5 }}>{b}</li>)}
+              <ul style={{ margin: '3px 0 0', paddingLeft: 14, lineHeight: 1.45 }}>
+                {job.bullets.map(b => <li key={b} style={{ marginBottom: 1 }}>{b}</li>)}
               </ul>
             </div>
           ))}
